@@ -1,0 +1,296 @@
+// Le pagine web moderne altamente elaborate soffrono principalmente di 3 problemi legati agli stili:
+// 1) stili mal organizzati
+// 2) stili poco mantenibili
+// 3) stili spesso duplicati
+
+// Non sarebbe bello scrivere i file di stile in un modo più intelligente? In modo da organizzare meglio i file,
+// trovare più facilmente i punti da correggere ed evitare le duplicazioni? SASS (Syntactically Awesome Style Sheets)
+// propone una soluzione, mettendo a disposizione una sintassi PIÙ POTENTE per la stesura dei fogli di stile.
+// È una sintassi 100% retrocompatibile con CSS, e verrà automaticamente compilata in un file CSS risultante (l'unico
+// formato leggibile dai browser) grazie all'estensione di VSCode chiamata "Live SASS Compiler".
+
+// Abbiamo ora a disposizione una sintassi ben più potente del normale CSS! Vediamone pian piano le caratteristiche:
+
+// 1) si può scrivere del normalissimo CSS
+main {
+    font-size: 1.1em;
+  }
+  
+  p {
+    color: white;
+    background-color: green;
+  }
+  
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  // _____________
+  
+  // nav {
+  //   display: block;
+  // }
+  
+  // nav ul {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  
+  // @media screen and (min-width: 576px) {
+  //   nav ul {
+  //     display: flex;
+  //     flex-direction: row;
+  //   }
+  // }
+  
+  // _____________
+  
+  // 2) SELETTORI NIDIFICATI (ANNIDATI)
+  
+  nav {
+    display: block;
+    background-color: pink;
+    ul {
+      display: flex;
+      flex-direction: column;
+      li {
+        margin-left: 0;
+        margin-right: 0;
+        @media screen and (min-width: 576px) {
+          margin-left: 0.5em;
+          margin-right: 0.5em;
+        }
+        @media screen and (min-width: 768px) {
+          margin-left: 1em;
+          margin-right: 1em;
+        }
+      }
+      @media screen and (min-width: 576px) {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  
+  // 3) LAVORARE MEGLIO CON LE PSEUDOCLASSI
+  
+  // #buttons button.primary {
+  //   color: white;
+  //   background-color: red;
+  // }
+  
+  // #buttons button.primary:hover {
+  //   color: black;
+  //   background-color: pink;
+  // }
+  
+  #buttons {
+    button.primary {
+      color: white;
+      background-color: red;
+      &:hover {
+        color: black;
+        background-color: pink;
+      }
+    }
+  }
+  
+  // nav ul li {
+  //   font-size: 0.9em;
+  // }
+  
+  // nav ul li:nth-of-type(2) {
+  //   color: azure;
+  // }
+  
+  nav {
+    ul {
+      li {
+        // come scrivere nav ul li {}
+        font-size: 0.9em;
+        &:nth-of-type(2) {
+          color: azure;
+        }
+      }
+    }
+  }
+  
+  // possiamo immaginare il "&" come un "this"
+  
+  // 4) UTILIZZARE UN PREFISSO COMUNE PER PROPRIETÀ SIMILI
+  // p.main-text {
+  //   font-size: 1.2em;
+  //   font-weight: bold;
+  //   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  //     'Lucida Sans', Arial, sans-serif;
+  // }
+  
+  p.main-text {
+    font: {
+      size: 1.2em;
+      weight: bold;
+      family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    }
+  }
+  
+  // 5) VARIABILI
+  // le variabili in SASS servono per memorizzare dei valori.
+  // i valori che salviamo potranno venire utilizzati nelle regole di stile che scriviamo successivamente
+  // concettualmente, in SASS, le variabili sono più simili a delle costanti (raramente le ri-assegneremo)
+  
+  // cosa possiamo salvare in una variabile SASS?
+  // - valori numerici (1, 50, 10px, 2.5em, 2rem, etc.)
+  // - stringhe ('hello', "ciao")
+  // - colori (red, blue, azure, #ffcc00, rgb(0, 255, 0), rgba(0, 255, 0, 0.5)
+  // - booleani (true, false)
+  // - null
+  // - valori combinati per le cosiddette proprietà CSS "shortcut" (1px solid black, 5px 10px 8px 10px)
+  // - liste di valori (10px, 16px, 24px) -> un po' come un array in JS
+  // - mappe di coppie chiave/valore -> un po' come gli oggetti in JS
+  
+  // es. di dichiarazione variabile
+  $main-margin: 35px;
+  $primary-color: rgb(30, 30, 200);
+  // nomenclatura kebab-case :)
+  $main-padding: 2em;
+  
+  h1 {
+    margin-left: $main-margin; // 35px
+    margin-right: $main-margin; // 35px
+    color: $primary-color; // rgb(30, 30, 200);
+  }
+  
+  // SASS sa utilizzare anche gli operatori matematici, logici e di comparazione
+  // + - / *
+  // ==, !=, <, > <=, >=
+  
+  aside {
+    padding: $main-padding + 1em; // 2em + 1em = 3em
+  }
+  
+  // 5) MIXINS
+  // un MIXIN è un blocco di regole CSS, richiamabile con una singola direttiva
+  
+  @mixin buttonStyles {
+    color: lightgreen;
+    background-color: black;
+    padding: $main-padding;
+    border: {
+      radius: 50px;
+    }
+  }
+  
+  button.spotify {
+    @include buttonStyles; // portiamo dentro questo selettore CSS tutte le regole di buttonStyles
+    &:nth-of-type(1) {
+      padding: $main-padding + 1em;
+    }
+  }
+  
+  // un mixin può essere "immaginato" come una "funzione" in SCSS...
+  // ...e come le funzioni in JS è possibile personalizzarli tramite parametri!
+  
+  @mixin customStyle($myBackgroundColor: red) {
+    margin-top: 10px;
+    border: 2px solid black;
+    background-color: $myBackgroundColor;
+  }
+  
+  .container > article {
+    // gli article dentro le classi container
+    @include customStyle(lightblue);
+  }
+  
+  .container > aside {
+    @include customStyle(
+  
+    ); // $myBackgroundColor prende il colore di default indicato, quindi red
+  }
+  
+  // 6) INTERPOLAZIONE nelle stringhe
+  @mixin fontInterpolation($property, $value) {
+    // questo mixin applicherà delle regole su una proprietà DINAMICA relativa alla famiglia delle proprietà font
+    // dovrei mettere "font" e poi aggiungerci il valore di $property, per ottenere tipo font-size, font-weight
+    font-#{$property}: $value;
+  }
+  
+  // dicitura #{$nome-parametro}
+  
+  .elemento1 {
+    @include fontInterpolation('size', 24px);
+  }
+  
+  .elemento2 {
+    @include fontInterpolation('weight', 700);
+  }
+  
+  // 7) CICLI
+  // è possibile in SASS utilizzare dei cicli per "automatizzare" la generazione di STILI e di CLASSI
+  $my-sizes: 10px, 16px, 24px; // come un array :)
+  
+  // creiamo un ciclo! in SASS si utilizza la direttiva @each
+  @each $single-size in $my-sizes {
+    // questo è un ciclo che scorre individualmente gli elementi di my-sizes, uno alla volta
+    // $single-size vale 10px al primo ciclo, 16px al secondo e 24px al terzo
+    // GENERIAMO ORA DELLE CLASSI CSS
+    .text-#{$single-size} {
+      color: black;
+      font-size: $single-size;
+    }
+  }
+  
+  // dichiaro una mappa, ovvero una serie di coppie chiave/valore (un po' come un oggetto in JS!)
+  $sizes-map: (
+    xs: 8px,
+    sm: 12px,
+    md: 16px,
+    lg: 20px,
+    xl: 24px,
+    xxl: 28px,
+  );
+  
+  @each $breakpoint, $value in $sizes-map {
+    .text-#{$breakpoint} {
+      font-size: $value;
+    }
+  }
+  
+  // 8) IF/ELSE
+  // in SASS è possibile utilizzare delle direttive condizionali al fine di generare classi con differente contenuto
+  // è possibile impostare delle condizioni relativamente all'esistenza di una variabile, ad una comparazione, etc.
+  
+  $my-value: blue;
+  
+  @mixin generate-margin {
+    .custom-margin {
+      @if $my-value == red {
+        margin: 10px;
+      } @else {
+        margin: 0px;
+      }
+    }
+  }
+  
+  @include generate-margin;
+  
+  @mixin generate-padding($value) {
+    .custom-padding {
+      @if $value >= 16 {
+        padding: #{$value}px;
+      } @else {
+        padding: 10px;
+      }
+    }
+  }
+  
+  @include generate-padding(0);
+  // @include generate-padding(30); // genero una classe diversa
+  
+  // 9) PARTIALS
+  // SASS ci permette di lavorare su singoli, piccoli files che volendo possono occuparsi di specifiche
+  // porzione di stile
+  // questo rende il lavoro più MODULARE, e MOLTO MANTENIBILE
+  
+  // passiamo a main.scss

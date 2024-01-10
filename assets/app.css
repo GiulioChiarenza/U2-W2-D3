@@ -1,0 +1,153 @@
+main {
+  font-size: 1.1em;
+}
+
+p {
+  color: white;
+  background-color: green;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+nav {
+  display: block;
+  background-color: pink;
+}
+nav ul {
+  display: flex;
+  flex-direction: column;
+}
+nav ul li {
+  margin-left: 0;
+  margin-right: 0;
+}
+@media screen and (min-width: 576px) {
+  nav ul li {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+}
+@media screen and (min-width: 768px) {
+  nav ul li {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+@media screen and (min-width: 576px) {
+  nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+#buttons button.primary {
+  color: white;
+  background-color: red;
+}
+#buttons button.primary:hover {
+  color: black;
+  background-color: pink;
+}
+
+nav ul li {
+  font-size: 0.9em;
+}
+nav ul li:nth-of-type(2) {
+  color: azure;
+}
+
+p.main-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+h1 {
+  margin-left: 35px;
+  margin-right: 35px;
+  color: rgb(30, 30, 200);
+}
+
+aside {
+  padding: 3em;
+}
+
+button.spotify {
+  color: lightgreen;
+  background-color: black;
+  padding: 2em;
+  border-radius: 50px;
+}
+button.spotify:nth-of-type(1) {
+  padding: 3em;
+}
+
+.container > article {
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: lightblue;
+}
+
+.container > aside {
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: red;
+}
+
+.elemento1 {
+  font-size: 24px;
+}
+
+.elemento2 {
+  font-weight: 700;
+}
+
+.text-10px {
+  color: black;
+  font-size: 10px;
+}
+
+.text-16px {
+  color: black;
+  font-size: 16px;
+}
+
+.text-24px {
+  color: black;
+  font-size: 24px;
+}
+
+.text-xs {
+  font-size: 8px;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
+.text-md {
+  font-size: 16px;
+}
+
+.text-lg {
+  font-size: 20px;
+}
+
+.text-xl {
+  font-size: 24px;
+}
+
+.text-xxl {
+  font-size: 28px;
+}
+
+.custom-margin {
+  margin: 0px;
+}
+
+.custom-padding {
+  padding: 10px;
+}/*# sourceMappingURL=app.css.map */

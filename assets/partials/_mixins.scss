@@ -1,0 +1,16 @@
+@mixin customStyle($BackgroundColor) {
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius:  50px;
+    color: $text;
+    background-color: $BackgroundColor;
+  }
+  @mixin floating {
+    border-radius: 20px;
+    box-shadow: 50%;
+    border: 1px solid black
+  }
+  @mixin grid() {
+display: flex;
+
+  }

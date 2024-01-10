@@ -1,0 +1,11 @@
+
+ 
+  button.primo {
+    @include customStyle($button1)
+  }
+  button.secondo {
+    @include customStyle($button2)
+  }
+  button.terzo {
+    @include customStyle($button3)
+  }

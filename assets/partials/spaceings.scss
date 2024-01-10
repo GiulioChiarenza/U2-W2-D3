@@ -1,0 +1,18 @@
+$sizes-map: (
+   
+    sm: 4px,
+    md: 6px,
+    lg: 8px,
+    xl: 10px,
+    xxl: 15px,
+  );
+  @each $padding, $value in $sizes-map {
+    .padding#{$padding} {
+      padding: $value ;
+    }
+  }
+  @each $margin, $value in $sizes-map {
+    .margin#{$margin} {
+      margin: $value ;
+    }
+  }

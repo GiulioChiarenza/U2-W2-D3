@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-size: 1em;
+}
+
+main {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  
+}/*# sourceMappingURL=style.css.map */

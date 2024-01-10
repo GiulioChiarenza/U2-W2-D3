@@ -1,0 +1,14 @@
+main {
+    font: {
+        family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+        
+    }
+}
+@mixin title-big {
+    size: 1.2em;
+    weight: bold;
+    family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+      
+}
